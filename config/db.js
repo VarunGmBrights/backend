@@ -7,7 +7,6 @@ export const connectDB = async () => {
         console.log(`DB Connected: ${conn.connection.host}`);
     } catch (error) {
         console.error(`DB Connection Error: ${error.message}`);
-        // Don't exit on Vercel - let the server start anyway
-        process.exit(1);
+        // Don't exit on Vercel - continue anyway
     }
 }
