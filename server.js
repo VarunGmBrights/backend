@@ -37,7 +37,12 @@ app.get("/",(req,res)=>{
       res.send("API Working")
 })
 
+// Export for Vercel
+export default app;
+
+/*
 app.listen(port,()=>{
 
     console.log(`Server Started on http://localhost:${port}`)
 })
+*/
