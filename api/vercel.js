@@ -5,11 +5,19 @@ import foodRouter from '../routes/foodRoute.js'
 import userRouter from '../routes/userRoute.js'
 import cartRouter from '../routes/cartRoute.js'
 import orderRouter from '../routes/orderRoute.js'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 
 // Middleware
 app.use(express.json())
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Cookie parser
+app.use(cookieParser())
+
+// CORS configuration
 app.use(cors({
   origin: [
     'https://frontend-sigma-henna-94.vercel.app', 

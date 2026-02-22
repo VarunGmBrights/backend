@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute.js'
 import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
+import cookieParser from 'cookie-parser'
 
 //app config
 
@@ -17,6 +18,9 @@ const port = process.env.PORT || 4000
 app.use(express.json())
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Cookie parser
+app.use(cookieParser())
 
 // CORS configuration
 app.use(cors({

@@ -1,7 +1,13 @@
 import jwt from 'jsonwebtoken'
 
 const authMiddleware = async (req,res,next) => {
-       const {token } = req.headers;
+       let {token } = req.headers;
+       
+       // Handle Bearer token format
+       if (token && token.startsWith('Bearer ')) {
+         token = token.slice(7, token.length);
+       }
+       
        if (!token) {
         return res.json({success:false,message:"Not Authorised , login again!"})
        }

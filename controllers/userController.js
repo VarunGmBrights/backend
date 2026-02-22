@@ -21,6 +21,11 @@ const loginUser = async (req,res) => {
         }
 
         const token = createToken(user._id);
+        res.cookie('token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'none'
+        });
         res.json({success:true,token})
     } catch (error) {
         console.log(error)
@@ -61,6 +66,11 @@ const registerUser = async (req,res) => {
 
      const user =  await newUser.save()
      const token = createToken(user._id)
+     res.cookie('token', token, {
+       httpOnly: true,
+       secure: process.env.NODE_ENV === 'production',
+       sameSite: 'none'
+     });
      res.json({success:true,token})
 
     } catch (error) {
